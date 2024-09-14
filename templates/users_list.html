@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Users List{% endblock %}
+
+{% block content %}
+<h1>Users List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td><a href="{{ url_for('user_movies', user_id=user.id) }}">View Movies</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_user') }}">Add User</a>
+{% endblock %}
