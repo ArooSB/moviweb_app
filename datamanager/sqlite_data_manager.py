@@ -74,6 +74,18 @@ class SQLiteDataManager(DataManagerInterface):
         session.close()
         return movies
 
+    def get_movie_by_id(self, movie_id):
+        """
+        Retrieves a movie by its ID.
+
+        :param movie_id: The ID of the movie to retrieve.
+        :return: A Movie object if found, otherwise None.
+        """
+        session = self.Session()
+        movie = session.query(Movie).filter_by(id=movie_id).first()
+        session.close()
+        return movie
+
     def add_user(self, name):
         """
         Adds a new user to the database.
